@@ -12,13 +12,23 @@ class _startState extends State<start>{
   Widget build(BuildContext context) {
     size = MediaQuery.of(context).size;
     return Scaffold(
+        backgroundColor: Colors.cyan[400],
+      appBar: AppBar(
+
+        title: Text(
+          "上一頁",
+              style: TextStyle(color: Colors.white),
+        ),
+      ),
       body: Center(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             title,
-            takeButton("拍照", context)
+            takeButton("開始拍照", context),
+            pushButton("上傳照片", context),
+            InformationButton("害蟲資料", context)
           ],
         ),
       )
@@ -51,6 +61,7 @@ Widget title = Container(
   // }
 Widget takeButton(String s,BuildContext context){
   return Container(
+  margin: EdgeInsets.symmetric(vertical: 20),
       child: RaisedButton(
         shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(30.0),
@@ -63,4 +74,34 @@ Widget takeButton(String s,BuildContext context){
       )
   );
 }
+  Widget pushButton(String s,BuildContext context){
+    return Container(
+        margin: EdgeInsets.symmetric(vertical: 20),
+        child: RaisedButton(
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(30.0),
+              side: BorderSide(color: Colors.red)),
+          onPressed: (){
+            Navigator.push(
+                context, MaterialPageRoute(builder: (context) => start()));
+          },
+          child: Text((s), style: TextStyle(fontSize: 60, color: Colors.black),),
+        )
+    );
+  }
+  Widget InformationButton(String s,BuildContext context){
+    return Container(
+        margin: EdgeInsets.symmetric(vertical: 20),
+        child: RaisedButton(
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(30.0),
+              side: BorderSide(color: Colors.red)),
+          onPressed: (){
+            Navigator.push(
+                context, MaterialPageRoute(builder: (context) => start()));
+          },
+          child: Text((s), style: TextStyle(fontSize: 60, color: Colors.black),),
+        )
+    );
+  }
 }

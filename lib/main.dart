@@ -18,16 +18,15 @@ class MyHomePage extends StatelessWidget{
   Widget build(BuildContext context){
     return MaterialApp(
       home: Scaffold(
-        backgroundColor: Colors.green,
+        backgroundColor: Colors.cyan[400],
         body: Center(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-
               Image.asset("assets/bug.png"),
               titleSection,
-              RadButton("開始使用", context)
+              RadButton("開始辨識", context)
             ],
           ),
         ),
