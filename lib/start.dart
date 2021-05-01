@@ -68,7 +68,7 @@ Widget takeButton(String s,BuildContext context){
             side: BorderSide(color: Colors.red)),
         onPressed: (){
           Navigator.push(
-              context, MaterialPageRoute(builder: (context) => start()));
+              context, MaterialPageRoute(builder: (context) => takephoto()));
         },
         child: Text((s), style: TextStyle(fontSize: 60, color: Colors.black),),
       )
