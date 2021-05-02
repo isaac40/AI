@@ -1,5 +1,6 @@
 import 'package:aitest1/main.dart';
 import 'package:flutter/material.dart';
+import 'takephoto.dart';
 
 class start extends StatefulWidget {
   @override
