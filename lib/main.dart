@@ -1,3 +1,4 @@
+import 'package:aitest1/takephoto.dart';
 import 'package:flutter/material.dart';
 import 'start.dart';
 
@@ -51,7 +52,7 @@ Widget RadButton(String s , BuildContext context){
         side: BorderSide(color: Colors.red)),
       onPressed: (){
         Navigator.push(
-            context, MaterialPageRoute(builder: (context) => start()));
+            context, MaterialPageRoute(builder: (context) => takephoto()));
       },
       child: Text((s), style: TextStyle(fontSize: 60, color: Colors.black),),
       )
