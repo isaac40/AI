@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:dio/dio.dart';
 
 class takephoto extends StatefulWidget{
   @override
@@ -31,13 +32,7 @@ class _ImagePickerState extends State<takephoto> {
                 onPressed: _takePhoto,
                 child: Text("開啟相機", style: TextStyle(fontSize: 60, color: Colors.black),),
               ),
-              RaisedButton(
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(30.0),
-                    side: BorderSide(color: Colors.red)),
-                onPressed: _openGallery,
-                child: Text("開啟相簿", style: TextStyle(fontSize: 60, color: Colors.black),),
-              ),
+              _buildsImage()
             ],
           ),
         ));
@@ -48,6 +43,7 @@ class _ImagePickerState extends State<takephoto> {
 
     setState(() {
       _imgPath = image;
+      _upLoad();
     });
   }
 
@@ -56,8 +52,19 @@ class _ImagePickerState extends State<takephoto> {
     setState(() {
       _imgPath = image;
     });
-
-
-    
   }
+  _upLoad() async{
+      FormData formData = FormData.fromMap({
+        "file":await MultipartFile.fromFile(_imgPath.path, filename: "aa.jpg")
+      });
+      Response response=   await new Dio().post("http://192.168.42.244:9102/file/upload",data: formData);
+      print("上傳成功===========${response.data}");
+    }
+    Widget _buildsImage(){
+      if(_imgPath==null){
+        return Text("重新選擇");
+      }else{
+        return Image.file(_imgPath);
+      }
+    }
 }
